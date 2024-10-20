@@ -1,12 +1,10 @@
 # KrugleAI KLiP User Guide
 
-**Version**: v0.6.0-beta
-
+**Version**: v0.6.1-beta
 
 <div align="center">
 <img width="500" alt="KLiP" src="logo.png">
 </div>
-
 
 - [KrugleAI KLiP User Guide](#krugleai-klip-user-guide)
   - [Introduction](#introduction)
@@ -16,8 +14,10 @@
     - [Add classes, files, and more into the context](#add-classes-files-and-more-into-the-context)
     - [Inline Editing](#inline-editing)
     - [AI-powered code autocompletion (🚧 Experimental)](#ai-powered-code-autocompletion--experimental)
+    - [Reference your organization's code and documentation](#reference-your-organizations-code-and-documentation)
     - [Codebase Retrieval](#codebase-retrieval)
     - [Chat with your documentation (🚧 Experimental)](#chat-with-your-documentation--experimental)
+    - [Web search mode](#web-search-mode)
     - [Quick Lens Tools (🚧 Experimental)](#quick-lens-tools--experimental)
       - [Prerequisite](#prerequisite)
       - [How to Disable Quick Lens Tools](#how-to-disable-quick-lens-tools)
@@ -58,6 +58,7 @@
   - [Configuration](#configuration)
     - [Modifying the LLMs](#modifying-the-llms)
     - [Adjustment of LLM Parameters](#adjustment-of-llm-parameters)
+    - [Suggested follow up questions](#suggested-follow-up-questions)
     - [AI-powered code autocompletion](#ai-powered-code-autocompletion)
       - [`tabAutocompleteModel`](#tabautocompletemodel)
       - [`tabAutocompleteOptions`](#tabautocompleteoptions)
@@ -80,7 +81,7 @@
         - [GitLab Merge Request](#gitlab-merge-request)
         - [Jira Issues](#jira-issues)
         - [Operating System](#operating-system)
-        - [Krugle Enterprise files - Work in Progress, Coming Soon](#krugle-enterprise-files---work-in-progress-coming-soon)
+        - [Codebase Skeleton](#codebase-skeleton)
         - [PostgreSQL - Work in Progress, Coming Soon](#postgresql---work-in-progress-coming-soon)
         - [Database Tables - Work in Progress, Coming Soon](#database-tables---work-in-progress-coming-soon)
         - [Debugger: Local Variables - Work in Progress, Coming Soon](#debugger-local-variables---work-in-progress-coming-soon)
@@ -98,7 +99,10 @@
       - [Invalid credentials for](#invalid-credentials-for)
     - [Why KLiP keeps outputting garbled text](#why-klip-keeps-outputting-garbled-text)
     - [How can I customize which files are indexed?](#how-can-i-customize-which-files-are-indexed)
-    - [Why Shasta is not using all CPU cores?](#why-shasta-is-not-using-all-cpu-cores)
+    - [Why doesn't  Shasta always use all CPU cores?](#why-doesnt--shasta-always-use-all-cpu-cores)
+    - [Why doesn't Shasta always use the GPU?](#why-doesnt-shasta-always-use-the-gpu)
+      - [100% GPU Usage](#100-gpu-usage)
+      - [Partial CPU/GPU Usage](#partial-cpugpu-usage)
     - [I'm not seeing any code completions](#im-not-seeing-any-code-completions)
     - [Completions are slow](#completions-are-slow)
     - [Completions don't know about my code](#completions-dont-know-about-my-code)
@@ -163,6 +167,20 @@ KLiP now supports AI-powered code autocompletion. Easily get code suggestions by
 
 ![](ai_code_autocomplete_02.gif)
 
+### Reference your organization's code and documentation
+
+Krugle Enterprise is a central search engine that offers federated access to an organization's codebase, code artifacts, and technical documentation. It provides tools for flexible analysis and search capabilities, enabling users to identify critical code patterns, security vulnerabilities, and application issues in real-time. The platform is designed to enhance collaboration and efficiency within development teams by making technical information easily accessible and actionable at scale.
+
+With KLiP, you can search and browse any code files or documentation indexed in the Krugle Enterprise platform without needing to clone, download, or index them locally.
+
+![](ke_search.gif)
+
+```json
+{
+  "name": "krugle",
+}
+```
+
 ### Codebase Retrieval
 
 Ask questions about your codebase.
@@ -205,7 +223,6 @@ The `@docs` context provider allows you to interact with your documentation d
 
 ![](docs.gif)
 
-
 The `@docs` context provider works by crawling specified documentation sites, generating embeddings, and storing them locally for you. This process allows for quick and efficient access to your documentation content.
 
 We also offer a selection of pre-indexed documentation sites for popular frameworks and libraries. You can find them from the dropdown list of the `@docs` context provider.
@@ -214,6 +231,35 @@ To add your own documentations please read more [here](#documentation).
 
 ![](docs_add.gif)
 
+### Web search mode
+
+KLiP can use the latest internet data to answer questions, delivering more accurate and up-to-date responses.
+
+![](web_search.gif)
+
+In your config.json, add the slash command `web` as shown in the example below. You can get a free API key at [serper.dev](https://serper.dev/).
+
+```json
+{
+  ...
+
+  "slashCommands": [
+    {
+      "name": "web",
+      "description": "Web-enabled assistant bot that searches the internet to inform its responses.",
+      "params": {
+        "provider": "serper.dev",
+        "type": "google",
+        "api_key": "YOUR_SERPER_DEV_API_KEY",
+        "country": "Japan",
+        "language": "Japanese"
+      }
+    }
+  ]
+
+  ...
+}
+```
 
 ### Quick Lens Tools (🚧 Experimental)
 
@@ -231,7 +277,7 @@ For example, if you want to use KLiP Quick Lens for Java, and you haven't enable
 
 #### How to Disable Quick Lens Tools
 
-Quick Lens Tools are enabled by default. To disable them, open the settings menu (`cmd/ctrl + ,`), search for `"klip.enableQuickLensTools"`, and uncheck the box to disable.
+Quick Lens Tools are enabled by default. To disable them, open the settings menu (`cmd/ctrl + ,`), search for `klip.enableQuickLensTools`, and uncheck the box to disable.
 
 #### Custom Quick Lens Tools
 
@@ -403,7 +449,6 @@ KLiP also supports OpenAI models and any models compatible with the OpenAI API p
 
 ![](model_setup02.png)
 
-
 ### Dashboard
 
 Dashboard allows you to check the indexing status, token usage status and more.
@@ -426,7 +471,7 @@ We highly suggest relocating KLiP to the right sidebar of VS Code. This ensures 
 
 3. Follow the KLiP setup wizard to configure your models
 
-<img width="400" alt="Setup Wizard" src="setup_wizard.gif">
+![](setup_wizard.png)
 
 4. You can now disconnect from the internet and harness the power of AI code development with KLiP.
 
@@ -562,11 +607,11 @@ Currently, KLiP can only handle edits in one file at a time. However, you can gu
 
 #### Using Entire File Context
 
-For very large files, KLiP may struggle to incorporate the entire content due to its limited LLM context windows. Consider selecting specific code sections containing relevant context, as complete files are rarely needed.
+For very large files, KLiP may struggle to incorporate the entire content due to its limited LLM context windows. Consider selecting specific code sections containing relevant ontext, as complete files are rarely needed.
 
 #### Editing Large Files
 
-Similarly, attempting to edit too many lines at once may exceed context window limits and result in sluggish performance when applying suggestions.
+Similarly, attempting to edict too many lines at once may exceed context window limits and result in sluggish performance when applying suggestions.
 
 #### Selecting Really Long Lines
 
@@ -583,7 +628,6 @@ While KLiP may not tackle tasks comprehensively in one go, breaking them down in
 You can manually build your config.json file, accessible by clicking the gear icon at the bottom right of KLiP.
 
 <img width="486" alt="image" src="config.png">
-
 
 ### Modifying the LLMs
 
@@ -676,6 +720,10 @@ Here's a brief explanation of each:
 
 These parameters are often adjusted based on the specific requirements of the task and the desired characteristics of the generated text.
 
+### Suggested follow up questions
+
+Suggested follow up questions feature is enabled by default. To disable it, open the settings menu (`cmd/ctrl + ,`), search for `klip.showFollowUp`, and uncheck the box to disable.
+
 ### AI-powered code autocompletion
 
 #### `tabAutocompleteModel`
@@ -728,6 +776,7 @@ To enable/disable the KLiP code autocomplete feature, simply click the KLiP butt
 
 ![](autocomplete.png)
 
+
 ### Context Providers
 
 Context Providers enable you to simply type '@' and access a dropdown menu of content that can all serve as context for the Language Model (LLM). Each context provider functions as a plugin. If you need to reference a source of information that isn't available, you can request a new context provider to Krugle support team.
@@ -769,7 +818,6 @@ Use `@code` to reference specific functions or classes from across your project.
 Use `@diff` to refer to all changes made in your current branch. This is helpful for summarizing your work or requesting a general review before committing.
 
 ![](diff.png)
-
 
 ```json
 { "name": "diff" }
@@ -1014,9 +1062,16 @@ Type `@os` to reference your current operating system's architecture and platfor
 { "name": "os" }
 ```
 
-##### Krugle Enterprise files - Work in Progress, Coming Soon
+##### Codebase Skeleton
 
-Use `@krugle` to directly reference files within Krugle Enterprise search index.
+Provides an overview of all files in the codebase or a subfolder, highlighting the key symbols of top-level classes, functions, and methods in each file. It includes the critical lines of code where these symbols are defined, helping the model better understand how each piece of code connects to the overall codebase.
+
+```json
+{
+  "name": "skeleton",
+  "params": {}
+}
+```
 
 ##### PostgreSQL - Work in Progress, Coming Soon
 
@@ -1188,7 +1243,7 @@ media
 # ...
 ```
 
-### Why Shasta is not using all CPU cores?
+### Why doesn't  Shasta always use all CPU cores?
 
 Simply add the `numThreads` option.
 
@@ -1208,6 +1263,55 @@ Simply add the `numThreads` option.
       "numThreads": 8
     }
   }
+```
+
+### Why doesn't Shasta always use the GPU?
+
+Shasta uses dedicated GPU (NVIDIA/AMD) VRAM for inference. The CPU is always required because tasks like loading model parameters still need to read the model file into RAM before transferring it to VRAM.
+
+#### 100% GPU Usage
+
+```text
+krugle-code-10b:latest c1669e6bec24 10 GB 100% GPU
+```
+
+All model weights are loaded into VRAM. The next factor is the context window size.
+
+If there's enough available VRAM to handle the context window size, the GPU will be used. If not, the CPU will handle the inference.
+
+The context window size can be adjusted on the client side (AI Core or KLiP). For example, you can reduce the `contextLength` in KLiP by modifying the `config.json`:
+
+```json
+{
+  "title": "KrugleAI Code 10B",
+  "model": "krugle-code-10b",
+  "apiBase": "http://localhost:5668",
+  "contextLength": 16384,
+  "template": "krugle-10b-en",
+  "completionOptions": {
+    "temperature": 0.7,
+    "topK": 45,
+    "topP": 0.75,
+    "maxTokens": 4096
+  },
+  "provider": "krugle-shasta"
+}
+```
+
+#### Partial CPU/GPU Usage
+
+When VRAM is nearly full or completely full, the remaining parts of the model are loaded into system memory, and the CPU handles inference indefinitely. However, the GPU is still faster and more efficient than using the CPU alone.
+
+```shell
+krugle-code-10b:latest c1669e6bec24 10 GB 100% GPU
+```
+
+Though 100% GPU usage, but VRAM only has for example 500 MB free VRAM.
+
+or
+
+```shell
+krugle-code-10b:latest c1669e6bec24 10 GB 46%/54% CPU/GPU
 ```
 
 ### I'm not seeing any code completions

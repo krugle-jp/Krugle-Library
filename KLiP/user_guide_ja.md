@@ -1,6 +1,6 @@
 # KrugleAI KLiP ユーザーガイド
 
-**バージョン**: v0.6.0-beta
+**バージョン**: v0.6.1-beta
 
 <div align="center">
 <img width="500" alt="KLiP" src="logo.png">
@@ -14,8 +14,10 @@
     - [コンテキストにクラスやファイルを追加 (Add classes, files, and more into the context)](#コンテキストにクラスやファイルを追加-add-classes-files-and-more-into-the-context)
     - [インライン編集 (Inline Editing)](#インライン編集-inline-editing)
     - [AIによるコード自動補完 (AI-powered code autocompletion) (🚧 実験的)](#aiによるコード自動補完-ai-powered-code-autocompletion--実験的)
+    - [組織のコードとドキュメントを参照する](#組織のコードとドキュメントを参照する)
     - [コードベースの取得 (Codebase Retrieval)](#コードベースの取得-codebase-retrieval)
     - [ドキュメントとのチャット (Chat with your documentation) (🚧 実験的)](#ドキュメントとのチャット-chat-with-your-documentation--実験的)
+    - [Web検索モード](#web検索モード)
     - [クイックレンズツール (Quick Lens Tools)(🚧 実験的)](#クイックレンズツール-quick-lens-tools-実験的)
       - [前提条件](#前提条件)
       - [クイックレンズツールの無効化方法](#クイックレンズツールの無効化方法)
@@ -56,6 +58,7 @@
   - [設定 (Configuration)](#設定-configuration)
     - [LLMの設定](#llmの設定)
     - [LLMパラメータの調整](#llmパラメータの調整)
+    - [推奨フォローアップ質問](#推奨フォローアップ質問)
     - [AI搭載のコード自動補完 (AI-powered code autocompletion)](#ai搭載のコード自動補完-ai-powered-code-autocompletion)
       - [`tabAutocompleteModel`](#tabautocompletemodel)
       - [`tabAutocompleteOptions`](#tabautocompleteoptions)
@@ -78,7 +81,7 @@
         - [GitLab マージリクエスト (GitLab Merge Request)](#gitlab-マージリクエスト-gitlab-merge-request)
         - [Jira 課題 (Jira Issues)](#jira-課題-jira-issues)
         - [オペレーティングシステム](#オペレーティングシステム)
-        - [Krugle Enterpriseファイル - 作業中、近日公開](#krugle-enterpriseファイル---作業中近日公開)
+        - [コードベース スケルトン](#コードベース-スケルトン)
         - [PostgreSQL - 作業中、近日公開](#postgresql---作業中近日公開)
         - [データベーステーブル - 作業中、近日公開](#データベーステーブル---作業中近日公開)
         - [デバッガー：ローカル変数 - 作業中、近日公開](#デバッガーローカル変数---作業中近日公開)
@@ -161,6 +164,20 @@ KLiPは、AIによるコード自動補完をサポートしています。Tab�
 
 ![](ai_code_autocomplete_02.gif)
 
+### 組織のコードとドキュメントを参照する
+
+Krugle Enterpriseは、組織のコードベース、コードアーティファクト、技術ドキュメントへの統合的なアクセスを提供する中央検索エンジンです。柔軟な分析と検索機能を備えており、ユーザーは重要なコードパターンやセキュリティ脆弱性、アプリケーションの問題をリアルタイムで特定できます。このプラットフォームは、開発チームが技術情報に簡単にアクセスし、それを大規模に活用できるようにすることで、コラボレーションと効率を向上させるよう設計されています。
+
+KLiPを使用すると、Krugle Enterpriseプラットフォームにインデックスされたコードファイルやドキュメントを、ローカルにクローン、ダウンロード、インデックス化する必要なく、検索および閲覧することができます。
+
+![](ke_search.gif)
+
+```json
+{
+  "name": "krugle",
+}
+```
+
 ### コードベースの取得 (Codebase Retrieval)
 
 コードベースに関する質問をしてください。
@@ -210,6 +227,14 @@ KLiPはあなたのコードベースをインデックス化し、ワークス�
 独自のドキュメントを追加するには、[こちら](#documentation)をご覧ください。
 
 ![](docs_add.gif)
+
+### Web検索モード
+
+KLiPは最新のインターネットデータを使用して質問に回答し、より正確で最新の情報を提供します。
+
+![](web_search.gif)
+
+config.jsonに、以下の例のようにスラッシュコマンド web を追加してください。無料のAPIキーは[serper.dev](https://serper.dev/)から取得できます。
 
 ### クイックレンズツール (Quick Lens Tools)(🚧 実験的)
 
@@ -421,7 +446,7 @@ KLiPをVS Codeの右サイドバーに移動することを強くお勧めしま
 
 3. KLiPのセットアップウィザードに従ってモデルを設定します。
 
-<img width="400" alt="Setup Wizard" src="setup_wizard.gif">
+![](setup_wizard.png)
 
 4. これでインターネットから切断し、KLiPを使用してAIコード開発の力を活用できます。
 
@@ -669,6 +694,10 @@ LLMの出力におけるランダム性と創造性を管理するために、LL
 4. **Max tokens**: このパラメータは、モデルが単一の推論リクエストで生成できる最大トークン数を設定します。生成されるテキストの長さを制御し、モデルが過度に長い応答を生成するのを防ぎます。上記の例では、最大トークン数は2048に設定されています。
 
 これらのパラメータは、タスクの具体的な要件や生成されるテキストの望ましい特性に基づいて調整されることがよくあります。
+
+### 推奨フォローアップ質問
+
+推奨フォローアップ質問機能はデフォルトで有効になっています。無効にするには、設定メニュー（`cmd/ctrl + ,`）を開き、`klip.showFollowUp`を検索し、チェックを外して無効化してください。
 
 ### AI搭載のコード自動補完 (AI-powered code autocompletion)
 
@@ -1007,9 +1036,16 @@ assignee = currentUser() AND resolution = Unresolved order by updated DESC
 { "name": "os" }
 ```
 
-##### Krugle Enterpriseファイル - 作業中、近日公開
+##### コードベース スケルトン
 
-`@krugle`を使用して、Krugle Enterprise検索インデックス内のファイルを直接参照します。
+コードベースまたはサブフォルダ内のすべてのファイルの概要を提供し、各ファイルに含まれるトップレベルのクラス、関数、メソッドの主要なシンボルを強調表示します。これには、これらのシンボルが定義されている重要なコード行も含まれており、モデルが各コードの部分が全体のコードベースにどのように結びついているかをよりよく理解するのに役立ちます。
+
+```json
+{
+  "name": "skeleton",
+  "params": {}
+}
+```
 
 ##### PostgreSQL - 作業中、近日公開
 

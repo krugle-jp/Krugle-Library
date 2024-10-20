@@ -1,6 +1,6 @@
 # KrugleAI KLiP デプロイメントガイド
 
-**バージョン**: v0.6.0-beta
+**バージョン**: v0.6.1-beta
 
 <div align="center">
 <img width="500" alt="KLiP" src="logo.png">

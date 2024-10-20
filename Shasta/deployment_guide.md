@@ -1,6 +1,6 @@
 # KrugleAI Shasta Deployment Guide
 
-**Version**: v0.6.0-beta
+**Version**: v0.6.1-beta
 
 - [KrugleAI Shasta Deployment Guide](#krugleai-shasta-deployment-guide)
 - [macOS](#macos)
