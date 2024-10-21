@@ -1,6 +1,6 @@
 # KrugleAI KLiP User Guide
 
-**Version**: v0.6.1-beta
+**Version**: v0.6.2-beta
 
 <div align="center">
 <img width="500" alt="KLiP" src="logo.png">
