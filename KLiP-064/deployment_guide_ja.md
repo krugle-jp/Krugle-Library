@@ -1,6 +1,6 @@
 # KrugleAI KLiP デプロイメントガイド
 
-**バージョン**: v0.6.6-beta
+**バージョン**: v0.6.2-beta
 
 <div align="center">
 <img width="500" alt="KLiP" src="logo.png">
@@ -75,7 +75,7 @@ KLiPをVS Codeの右側のサイドバーに移動することを強くお勧め
 
 ![](install_klip3.png)
 
-KLiPの設定は自動的に開き、下記のように表示されます。Krugle EnterpriseのAPI URLを入力してください。もしKrugle Enterpriseサーバーで認証が有効になっている場合は、ユーザー名を入力してください。認証が不要な場合は、ユーザー名欄を空白のままにしてください。
+KLiPの設定が自動的に開きます。以下に示すように、Krugle Enterpriseサーバーのホストを入力します。Krugle Enterpriseサーバーで認証が有効になっている場合は、ユーザー名を入力します。そうでない場合は、ユーザー名フィールドは空白のままにします。
 
 ![](install_klip4.png)
 
@@ -111,4 +111,4 @@ Krugle Enterpriseサーバーで認証が有効になっている場合、エラ
 
 ライセンス
 
-[© 2025 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)
+[© 2024 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)

@@ -1,6 +1,6 @@
 # KrugleAI Shasta Deployment Guide
 
-**Version**: v0.6.6-beta
+**Version**: v0.6.1-beta
 
 - [KrugleAI Shasta Deployment Guide](#krugleai-shasta-deployment-guide)
 - [macOS](#macos)
@@ -134,14 +134,6 @@ Min Hardware Spec
 - GPU (Optional): NVIDIA GPUs supporting CUDA v11+ with at least 8 GB VRAM
 
 Platform: win-amd64 (x86-64)
-
-IMPORTANT: For Windows 11 24H2 and later, ensure that WMIC is installed.
-
-1. Go to **Start > All Apps > Settings**, or press **Windows Key + I** to open Settings.
-2. Click **System > Optional Features**.
-3. Select **View Features** next to **Add an optional feature**.
-4. Scroll down and check the box for **WMIC**.
-5. Click **Next > Add** to confirm and complete the installation.
 
 ## Installation
 
@@ -307,4 +299,4 @@ sudo systemctl stop shasta
 
 License
 
-[© 2025 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)
+[© 2024 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)

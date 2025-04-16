@@ -1,6 +1,6 @@
 # KrugleAI Shasta デプロイメントガイド
 
-**バージョン**: v0.6.6-beta
+**バージョン**: v0.6.1-beta
 
 - [KrugleAI Shasta デプロイメントガイド](#krugleai-shasta-デプロイメントガイド)
 - [macOS](#macos)
@@ -136,14 +136,6 @@ cd ~/Documents/shasta-darwin
 - GPU（オプション）: CUDA v11+をサポートするNVIDIA GPUで、VRAMが8 GB以上
 
 プラットフォーム: win-amd64 (x86-64)
-
-Windows 11 24H2以降では、WMICがインストールされていることを確認してください。
-
-1. **スタート > すべてのアプリ > 設定**に移動するか、**Windowsキー + I**を押して設定を開きます。
-2. **システム > オプション機能**をクリックします。
-3. **オプション機能の追加**の隣にある**機能の表示**を選択します。
-4. 下にスクロールし、**WMIC**にチェックを入れます。
-5. **次へ > 追加**をクリックして、インストールを完了します。
 
 ## インストール
 
@@ -308,4 +300,4 @@ sudo systemctl stop shasta
 
 ライセンス
 
-[© 2025 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)
+[© 2024 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)

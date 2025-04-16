@@ -1,6 +1,6 @@
 # KrugleAI KLiP Deployment Guide
 
-**Version**: v0.6.6-beta
+**Version**: v0.6.2-beta
 
 <div align="center">
 <img width="500" alt="KLiP" src="logo.png">
@@ -75,11 +75,11 @@ We highly suggest relocating KLiP to the right sidebar of VS Code. This ensures 
 
 ![](install_klip3.png)
 
-The KLiP settings will open automatically, as shown below, enter the Krugle Enterprise API URL. If authentication is enabled on your Krugle Enterprise server, enter the username. Otherwise, leave the username field blank.
+The KLiP settings will open automatically, as shown below, enter the Krugle Enterprise server host. If authentication is enabled on your Krugle Enterprise server, enter the username. Otherwise, leave the username field blank.
 
 ![](install_klip4.png)
 
-1. Reboot the entire VSCode. Alternatively, reload the window by typing the shortcut `CMD + SHIFT + P` on macOS or `CTRL + SHIFT + P` on other platforms. Then choose the `Reload Window` option.
+3. Reboot the entire VSCode. Alternatively, reload the window by typing the shortcut `CMD + SHIFT + P` on macOS or `CTRL + SHIFT + P` on other platforms. Then choose the `Reload Window` option.
 
 ![](install_klip5.png)
 
@@ -114,4 +114,4 @@ Next? Configure your LLMs by following the [👉🏻 QuickStart](./user_guide.md
 
 License
 
-[© 2025 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)
+[© 2024 Krugle/Aragon Consulting Group, Inc.](https://krugle.co.jp)
