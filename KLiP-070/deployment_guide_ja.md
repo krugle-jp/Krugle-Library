@@ -16,7 +16,7 @@
     - [KrugleAI Base Proサービス（オプション）](#krugleai-base-proサービスオプション)
       - [GPUを搭載したLinuxサーバーにデプロイ](#gpuを搭載したlinuxサーバーにデプロイ)
     - [KLiP for VSCode](#klip-for-vscode)
-  - [新しいバージョンへのアップグレード](#新しいバージョンへのアップグレード)
+    - [新しいバージョンへのアップグレード](#新しいバージョンへのアップグレード)
 
 ## 前提条件
 
@@ -29,14 +29,13 @@
 ### 対応オペレーティングシステム
 
 - macOS Apple Silicon
-- macOS Intel
 - Windows x64
 - Linux x64
 
 ### ネットワーク要件
 
 - インストールには公共ネットワークへの接続が必要です。インストール後、KLiPは公共ネットワークへのアクセスを必要としません。
-- 開発用コンピュータは、KLiPの高度な機能およびライセンス登録のためにKrugle Enterpriseサーバーにアクセスできる必要があります。
+- 開発用コンピュータは、KLiPの高度な機能およびライセンス登録のためにKrugleKnow (Krugle Enterprise Search)サーバーにアクセスできる必要があります。
 
 
 ## インストール
@@ -71,39 +70,36 @@ KLiPをVS Codeの右側のサイドバーに移動することを強くお勧め
 
 ![](dnd.gif)
 
-2. KLiPを初めてインストールして開くと、右下隅に警告メッセージが表示されます。これは、KrugleAIライセンスの設定が必要であることを意味します。
+2. KLiPをインストールして初めて開くと、セットアップウィザードが表示されます。
 
-![](install_klip3.png)
+ステップ1：KrugleKnowを設定します。KrugleKnow APIのURLを入力してください。KrugleKnowサーバーで認証が有効になっている場合は、ユーザー名とパスワードを入力してください。認証が有効になっていない場合は、これらのフィールドを空白のままにしておいてください。
 
-KLiPの設定は自動的に開き、下記のように表示されます。Krugle EnterpriseのAPI URLを入力してください。もしKrugle Enterpriseサーバーで認証が有効になっている場合は、ユーザー名を入力してください。認証が不要な場合は、ユーザー名欄を空白のままにしてください。
+<img width="500" src="install_klip3.png">
 
-![](install_klip4.png)
+ステップ2（任意ですが、初めてKLiPをご利用になる方や0.7.0より前のバージョンをご使用の方には推奨します）：Shasta/Shasta Proの設定を構成します
 
-3. VSCode全体を再起動します。代わりに、macOSではショートカット `CMD + SHIFT + P`、他のプラットフォームでは `CTRL + SHIFT + P` を入力してウィンドウをリロードします。その後、「ウィンドウをリロード」オプションを選択します。
+<img width="500" src="install_klip4.png">
 
-![](install_klip5.png)
+VSCode はセットアップウィザードが完了すると再起動します。
 
-Krugle Enterpriseサーバーで認証が有効になっている場合、エラーメッセージが表示され、「パスワードを入力してください」と求められます。この問題を解決するには、[こちらのガイド](./user_guide_ja.md#why-klip-is-not-activated)に従ってください。
+<img width="500" src="install_klip5.png">
+
 
 次は？[👉🏻 クイックスタート](./user_guide_ja.md#quickstart)の章に従ってLLMを設定してください。
 
 ---
 
-## 新しいバージョンへのアップグレード
+### 新しいバージョンへのアップグレード
 
-1. 拡張機能から「@installed klip」を検索してKLiPをアンインストールします。
+ > ❗️ アップグレードの前に ~/.klip/config.yaml をバックアップしてください。
+
+1. 拡張機能から `@installed klip` を検索して、KLiPをアンインストールします。
 
 ![](upgrade_klip.png)
 
-2. VSCode拡張マーケットプレイスから「KLiP」を見つけて再インストールします。
+2. VSCode拡張機能マーケットプレイスで「KLiP」を見つけて再インストールします。
 
-3. 変更を適用するためにVSCodeを再起動します。
-
-4. 「ヘルプセンター」から「KLiPセットアップウィザード」を再度実行します。
-
-> ❗️ セットアップウィザードを実行する前に、config.sonのバックアップを取ってください。
-
-![](upgrade_klip2.png)
+3. 変更を有効にするためにVSCodeを再起動します。
 
 [👉🏻 詳細を読む](./user_guide_ja.md#quickstart)
 
