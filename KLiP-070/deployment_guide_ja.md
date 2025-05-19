@@ -42,7 +42,7 @@
 
 ### KrugleAI Shastaサービス
 
-[こちら](../Shasta/deployment_guide_ja.md)のガイドに従って、KrugleAI Shastaサービスをデプロイします。
+[こちら](../Shasta-070/deployment_guide_ja.md)のガイドに従って、KrugleAI Shastaサービスをデプロイします。
 
 ### KrugleAI Base Proサービス（オプション）
 
